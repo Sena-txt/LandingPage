@@ -1,0 +1,634 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>SlideIn - Jasa Desain Presentasi</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+  <style>
+    :root {
+      --primary-color: #0066FF;
+      --secondary-color: #0052CC;
+      --success-color: #10b981;
+      --warning-color: #f59e0b;
+      --danger-color: #ef4444;
+      --info-color: #0066FF;
+    }
+    
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      scroll-behavior: smooth;
+    }
+    
+    .fade-in {
+      opacity: 0;
+      transform: translateY(20px);
+      transition: opacity 0.6s ease, transform 0.6s ease;
+    }
+    
+    .fade-in.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+    
+    .gradient-bg {
+      background: linear-gradient(135deg, #0066FF 0%, #0052CC 100%);
+    }
+    
+    .card-hover {
+      transition: all 0.3s ease;
+    }
+    
+    .card-hover:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15) !important;
+    }
+    
+    .pulse-animation {
+      animation: pulse 2s infinite;
+    }
+    
+    @keyframes pulse {
+      0%, 100% { transform: scale(1); }
+      50% { transform: scale(1.05); }
+    }
+    
+    .navbar-custom {
+      background: rgba(255, 255, 255, 0.9) !important;
+      backdrop-filter: blur(10px);
+      border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+      transition: all 0.3s ease;
+    }
+    
+    .navbar-brand {
+      font-weight: bold;
+      font-size: 1.5rem;
+      color: var(--primary-color) !important;
+    }
+    
+    .nav-link {
+      color: #6c757d !important;
+      transition: color 0.3s ease;
+    }
+    
+    .nav-link:hover {
+      color: var(--primary-color) !important;
+    }
+    
+    .btn-primary-custom {
+      background: var(--primary-color);
+      border: none;
+      color: white;
+      transition: all 0.3s ease;
+    }
+    
+    .btn-primary-custom:hover {
+      background: var(--secondary-color);
+      transform: scale(1.05);
+    }
+    
+    .hero-section {
+      position: relative;
+      overflow: hidden;
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+    }
+    
+    .hero-overlay {
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background: rgba(0, 0, 0, 0.2);
+      z-index: 1;
+    }
+    
+    .hero-content {
+      position: relative;
+      z-index: 2;
+    }
+    
+    .hero-wave {
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      width: 100%;
+      overflow: hidden;
+      line-height: 0;
+    }
+    
+    .hero-wave svg {
+      position: relative;
+      display: block;
+      width: calc(100% + 1.3px);
+      height: 80px;
+    }
+    
+    .icon-circle {
+      width: 80px;
+      height: 80px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin: 0 auto 1.5rem;
+      font-size: 2rem;
+    }
+    
+    .pricing-popular {
+      position: relative;
+      border: 3px solid var(--primary-color) !important;
+    }
+    
+    .pricing-badge {
+      position: absolute;
+      top: -15px;
+      left: 50%;
+      transform: translateX(-50%);
+      background: var(--primary-color);
+      color: white;
+      padding: 0.5rem 1.5rem;
+      border-radius: 20px;
+      font-size: 0.875rem;
+      font-weight: bold;
+    }
+    
+    .whatsapp-btn {
+      background: #25d366;
+      border: none;
+      color: white;
+      transition: all 0.3s ease;
+    }
+    
+    .whatsapp-btn:hover {
+      background: #128c7e;
+      transform: scale(1.05);
+      color: white;
+    }
+    
+    .gradient-card {
+      background: linear-gradient(135deg, rgba(102, 126, 234, 0.1) 0%, rgba(118, 75, 162, 0.1) 100%);
+    }
+    
+    @media (max-width: 768px) {
+      .hero-section h1 {
+        font-size: 3rem !important;
+      }
+      
+      .hero-section p {
+        font-size: 1.1rem !important;
+      }
+      
+      .icon-circle {
+        width: 60px;
+        height: 60px;
+        font-size: 1.5rem;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Navigation -->
+  <nav class="navbar navbar-expand-lg navbar-light fixed-top navbar-custom">
+    <div class="container">
+      <a class="navbar-brand" href="#home">SlideIn</a>
+      
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      
+      <div class="collapse navbar-collapse" id="navbarNav">
+        <ul class="navbar-nav ms-auto">
+          <li class="nav-item">
+            <a class="nav-link" href="#tentang">Tentang</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#layanan">Layanan</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#keunggulan">Keunggulan</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#harga">Harga</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link btn btn-primary-custom px-3 py-2 ms-2 text-white" href="#kontak">Kontak</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Hero Section -->
+  <section class="hero-section gradient-bg text-white" id="home">
+    <div class="hero-overlay"></div>
+    <div class="container">
+      <div class="row justify-content-center text-center">
+        <div class="col-lg-8 hero-content">
+          <h1 class="display-2 fw-bold mb-4 fade-in">SlideIn</h1>
+          <p class="lead fs-3 mb-5 fade-in">Jasa desain presentasi profesional untuk pelajar, mahasiswa, dan tenaga pendidik.</p>
+          <a href="#kontak" class="btn btn-light btn-lg px-5 py-3 fade-in pulse-animation fw-semibold" style="color: var(--primary-color);">
+            Pesan Sekarang
+          </a>
+        </div>
+      </div>
+    </div>
+    <div class="hero-wave">
+      <svg viewBox="0 0 1440 320" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <path fill="#ffffff" d="M0,96L48,112C96,128,192,160,288,160C384,160,480,128,576,122.7C672,117,768,139,864,138.7C960,139,1056,117,1152,112C1248,107,1344,117,1392,122.7L1440,128L1440,320L1392,320C1344,320,1248,320,1152,320C1056,320,960,320,864,320C768,320,672,320,576,320C480,320,384,320,288,320C192,320,96,320,48,320L0,320Z"></path>
+      </svg>
+    </div>
+  </section>
+
+  <!-- Tentang Section -->
+  <section class="py-5 gradient-bg text-white position-relative" id="tentang">
+    <div class="hero-overlay"></div>
+    <div class="container position-relative" style="z-index: 2;">
+      <div class="row justify-content-center">
+        <div class="col-lg-10 text-center">
+          <h2 class="display-4 fw-bold mb-5 fade-in">Tentang SlideIn</h2>
+          <div class="row g-4">
+            <div class="col-md-6">
+              <div class="card bg-transparent border-light text-white h-100 card-hover fade-in">
+                <div class="card-body p-4">
+                  <div class="icon-circle text-white mb-4 mx-auto" style="background: rgba(255, 255, 255, 0.2); width: 70px; height: 70px; font-size: 1.8rem;">
+                    <i class="fas fa-users"></i>
+                  </div>
+                  <h4 class="fw-semibold mb-3">Untuk Pelajar & Mahasiswa</h4>
+                  <p class="mb-0 opacity-75">Kami memahami kebutuhan akademis dan memberikan solusi presentasi yang sesuai dengan standar pendidikan modern.</p>
+                </div>
+              </div>
+            </div>
+            <div class="col-md-6">
+              <div class="card bg-transparent border-light text-white h-100 card-hover fade-in">
+                <div class="card-body p-4">
+                  <div class="icon-circle text-white mb-4 mx-auto" style="background: rgba(255, 255, 255, 0.2); width: 70px; height: 70px; font-size: 1.8rem;">
+                    <i class="fas fa-palette"></i>
+                  </div>
+                  <h4 class="fw-semibold mb-3">Desain Profesional</h4>
+                  <p class="mb-0 opacity-75">Setiap presentasi dirancang dengan perhatian detail untuk menciptakan visual yang menarik dan mudah dipahami.</p>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="row mt-5">
+            <div class="col-lg-8 mx-auto">
+              <p class="lead fs-4 fade-in mb-0" style="line-height: 1.8;">
+                <strong>SlideIn</strong> hadir sebagai solusi kreatif untuk membantu Anda membuat presentasi yang <em>menarik, rapi, dan profesional</em>. Dengan tim desainer berpengalaman dan pemahaman mendalam tentang dunia pendidikan, kami siap menjadi partner terbaik dalam visualisasi ide-ide cemerlang Anda.
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- Wave separator -->
+    <div class="hero-wave" style="bottom: 0; transform: rotate(180deg);">
+      <svg viewBox="0 0 1440 320" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <path fill="#ffffff" d="M0,96L48,112C96,128,192,160,288,160C384,160,480,128,576,122.7C672,117,768,139,864,138.7C960,139,1056,117,1152,112C1248,107,1344,117,1392,122.7L1440,128L1440,320L1392,320C1344,320,1248,320,1152,320C1056,320,960,320,864,320C768,320,672,320,576,320C480,320,384,320,288,320C192,320,96,320,48,320L0,320Z"></path>
+      </svg>
+    </div>
+  </section>
+
+  <!-- Layanan Section -->
+  <section class="py-5 bg-light" id="layanan">
+    <div class="container">
+      <div class="row">
+        <div class="col-12 text-center mb-5">
+          <h2 class="display-4 fw-bold fade-in">Layanan Kami</h2>
+        </div>
+      </div>
+      <div class="row g-4">
+        <div class="col-lg-4 col-md-6">
+          <div class="card h-100 border-0 shadow card-hover fade-in">
+            <div class="card-body text-center p-5">
+              <div class="icon-circle text-white mb-4" style="background: var(--primary-color);">
+                <i class="fas fa-lightbulb"></i>
+              </div>
+              <h4 class="card-title fw-semibold mb-3">Desain Presentasi Custom</h4>
+              <p class="card-text text-muted">Presentasi sesuai kebutuhan, bisa request gaya, warna, dan layout.</p>
+            </div>
+          </div>
+        </div>
+        
+        <div class="col-lg-4 col-md-6">
+          <div class="card h-100 border-0 shadow card-hover fade-in">
+            <div class="card-body text-center p-5">
+              <div class="icon-circle text-white mb-4" style="background: var(--warning-color);">
+                <i class="fas fa-bolt"></i>
+              </div>
+              <h4 class="card-title fw-semibold mb-3">Paket Ekspres</h4>
+              <p class="card-text text-muted">Layanan cepat untuk deadline singkat, hasil tetap rapi dan profesional.</p>
+            </div>
+          </div>
+        </div>
+        
+        <div class="col-lg-4 col-md-6">
+          <div class="card h-100 border-0 shadow card-hover fade-in">
+            <div class="card-body text-center p-5">
+              <div class="icon-circle text-white mb-4" style="background: var(--danger-color);">
+                <i class="fas fa-heart"></i>
+              </div>
+              <h4 class="card-title fw-semibold mb-3">Revisi Gratis</h4>
+              <p class="card-text text-muted">2x revisi gratis untuk memastikan hasil sesuai harapan Anda.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Keunggulan Section -->
+  <section class="py-5" id="keunggulan">
+    <div class="container">
+      <div class="row">
+        <div class="col-12 text-center mb-5">
+          <h2 class="display-4 fw-bold fade-in">Kenapa Memilih SlideIn?</h2>
+        </div>
+      </div>
+      <div class="row g-4">
+        <div class="col-lg-6">
+          <div class="card border-0 shadow card-hover fade-in gradient-card">
+            <div class="card-body p-4">
+              <div class="d-flex align-items-start">
+                <div class="icon-circle text-white me-4 flex-shrink-0" style="background: var(--primary-color); width: 60px; height: 60px; font-size: 1.5rem;">
+                  <i class="fas fa-magic"></i>
+                </div>
+                <div>
+                  <h4 class="fw-semibold mb-3">Desain Profesional</h4>
+                  <p class="text-muted mb-0">Presentasi lebih estetik, informatif, dan mudah dipahami.</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        
+        <div class="col-lg-6">
+          <div class="card border-0 shadow card-hover fade-in gradient-card">
+            <div class="card-body p-4">
+              <div class="d-flex align-items-start">
+                <div class="icon-circle text-white me-4 flex-shrink-0" style="background: var(--success-color); width: 60px; height: 60px; font-size: 1.5rem;">
+                  <i class="fas fa-clock"></i>
+                </div>
+                <div>
+                  <h4 class="fw-semibold mb-3">Hemat Waktu</h4>
+                  <p class="text-muted mb-0">Tidak perlu pusing desain, cukup fokus pada isi materi.</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        
+        <div class="col-lg-6">
+          <div class="card border-0 shadow card-hover fade-in gradient-card">
+            <div class="card-body p-4">
+              <div class="d-flex align-items-start">
+                <div class="icon-circle text-white me-4 flex-shrink-0" style="background: var(--info-color); width: 60px; height: 60px; font-size: 1.5rem;">
+                  <i class="fas fa-tachometer-alt"></i>
+                </div>
+                <div>
+                  <h4 class="fw-semibold mb-3">Fast Response</h4>
+                  <p class="text-muted mb-0">Layanan ramah, cepat, dan siap membantu kapan pun dibutuhkan.</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        
+        <div class="col-lg-6">
+          <div class="card border-0 shadow card-hover fade-in gradient-card">
+            <div class="card-body p-4">
+              <div class="d-flex align-items-start">
+                <div class="icon-circle text-white me-4 flex-shrink-0" style="background: var(--warning-color); width: 60px; height: 60px; font-size: 1.5rem;">
+                  <i class="fas fa-dollar-sign"></i>
+                </div>
+                <div>
+                  <h4 class="fw-semibold mb-3">Harga Terjangkau</h4>
+                  <p class="text-muted mb-0">Paket presentasi mulai dari harga yang bersahabat untuk pelajar.</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Harga Section -->
+  <section class="py-5 bg-light" id="harga">
+    <div class="container">
+      <div class="row">
+        <div class="col-12 text-center mb-5">
+          <h2 class="display-4 fw-bold fade-in">Paket Harga</h2>
+        </div>
+      </div>
+      <div class="row g-4 justify-content-center">
+        <div class="col-lg-4 col-md-6">
+          <div class="card h-100 border-0 shadow card-hover fade-in">
+            <div class="card-body text-center p-5">
+              <h3 class="card-title fw-semibold mb-4">Basic</h3>
+              <div class="mb-4">
+                <span class="display-4 fw-bold" style="color: var(--primary-color);">Rp25.000</span>
+              </div>
+              <ul class="list-unstyled mb-5">
+                <li class="mb-3">
+                  <i class="fas fa-check text-success me-2"></i>
+                  5-7 slide
+                </li>
+                <li class="mb-3">
+                  <i class="fas fa-check text-success me-2"></i>
+                  Desain sederhana
+                </li>
+                <li class="mb-3">
+                  <i class="fas fa-check text-success me-2"></i>
+                  Revisi 1x
+                </li>
+              </ul>
+              <button class="btn btn-outline-secondary btn-lg w-100 pricing-btn" data-package="Basic">
+                Pilih Paket
+              </button>
+            </div>
+          </div>
+        </div>
+        
+        <div class="col-lg-4 col-md-6">
+          <div class="card h-100 border-0 shadow-lg card-hover fade-in pricing-popular">
+            <div class="pricing-badge">POPULER</div>
+            <div class="card-body text-center p-5">
+              <h3 class="card-title fw-semibold mb-4">Standard</h3>
+              <div class="mb-4">
+                <span class="display-4 fw-bold" style="color: var(--primary-color);">Rp50.000</span>
+              </div>
+              <ul class="list-unstyled mb-5">
+                <li class="mb-3">
+                  <i class="fas fa-check text-success me-2"></i>
+                  10-12 slide
+                </li>
+                <li class="mb-3">
+                  <i class="fas fa-check text-success me-2"></i>
+                  Desain profesional
+                </li>
+                <li class="mb-3">
+                  <i class="fas fa-check text-success me-2"></i>
+                  Revisi 2x
+                </li>
+              </ul>
+              <button class="btn btn-primary-custom btn-lg w-100 pricing-btn" data-package="Standard">
+                Pilih Paket
+              </button>
+            </div>
+          </div>
+        </div>
+        
+        <div class="col-lg-4 col-md-6">
+          <div class="card h-100 border-0 shadow card-hover fade-in">
+            <div class="card-body text-center p-5">
+              <h3 class="card-title fw-semibold mb-4">Express</h3>
+              <div class="mb-4">
+                <span class="display-4 fw-bold" style="color: var(--primary-color);">Rp75.000</span>
+              </div>
+              <ul class="list-unstyled mb-5">
+                <li class="mb-3">
+                  <i class="fas fa-check text-success me-2"></i>
+                  8-10 slide
+                </li>
+                <li class="mb-3">
+                  <i class="fas fa-check text-success me-2"></i>
+                  Pengerjaan 1 hari
+                </li>
+                <li class="mb-3">
+                  <i class="fas fa-check text-success me-2"></i>
+                  Revisi 1x
+                </li>
+              </ul>
+              <button class="btn btn-lg w-100 pricing-btn" data-package="Express" style="background: var(--warning-color); color: white;">
+                Pilih Paket
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Kontak Section -->
+  <section class="py-5 gradient-bg text-white position-relative" id="kontak">
+    <div class="hero-overlay"></div>
+    <div class="container position-relative" style="z-index: 2;">
+      <div class="row justify-content-center text-center">
+        <div class="col-lg-8">
+          <h2 class="display-4 fw-bold mb-4 fade-in">Hubungi Kami</h2>
+          <p class="lead fs-3 mb-5 fade-in">Pesan presentasi mudah lewat WhatsApp.</p>
+          <a href="https://wa.me/6281220019871" target="_blank" class="btn whatsapp-btn btn-lg px-5 py-3 fade-in fw-semibold">
+            <i class="fab fa-whatsapp me-2 fs-4"></i>
+            Chat via WhatsApp
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="py-5 bg-dark text-white">
+    <div class="container">
+      <div class="row align-items-center">
+        <div class="col-md-6 text-center text-md-start mb-3 mb-md-0">
+          <div class="fw-bold fs-4 mb-2" style="color: var(--primary-color);">SlideIn</div>
+          <p class="text-muted mb-0">Jasa desain presentasi profesional</p>
+        </div>
+        <div class="col-md-6">
+          <nav class="nav justify-content-center justify-content-md-end">
+            <a class="nav-link text-muted" href="#tentang">Tentang</a>
+            <a class="nav-link text-muted" href="#layanan">Layanan</a>
+            <a class="nav-link text-muted" href="#harga">Harga</a>
+            <a class="nav-link text-muted" href="#kontak">Kontak</a>
+          </nav>
+        </div>
+      </div>
+      <hr class="my-4 border-secondary">
+      <div class="text-center">
+        <p class="text-muted mb-0">&copy; 2025 SlideIn. All rights reserved.</p>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Bootstrap JS -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+  
+  <script>
+    // Intersection Observer for fade-in animation
+    const observerOptions = {
+      threshold: 0.1,
+      rootMargin: '0px 0px -50px 0px'
+    };
+
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('visible');
+        }
+      });
+    }, observerOptions);
+
+    document.querySelectorAll('.fade-in').forEach(el => {
+      observer.observe(el);
+    });
+
+    // Smooth scrolling for anchor links
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+      anchor.addEventListener('click', function (e) {
+        e.preventDefault();
+        const target = document.querySelector(this.getAttribute('href'));
+        if (target) {
+          const headerOffset = 80;
+          const elementPosition = target.getBoundingClientRect().top;
+          const offsetPosition = elementPosition + window.pageYOffset - headerOffset;
+
+          window.scrollTo({
+            top: offsetPosition,
+            behavior: 'smooth'
+          });
+          
+          // Close navbar if open
+          const navbarToggler = document.querySelector('.navbar-toggler');
+          const navbarCollapse = document.querySelector('.navbar-collapse');
+          if (navbarCollapse.classList.contains('show')) {
+            navbarToggler.click();
+          }
+        }
+      });
+    });
+
+    // Navbar background on scroll
+    window.addEventListener('scroll', () => {
+      const navbar = document.querySelector('.navbar');
+      if (window.scrollY > 100) {
+        navbar.classList.add('shadow');
+      } else {
+        navbar.classList.remove('shadow');
+      }
+    });
+
+    // Pricing button handlers
+    document.querySelectorAll('.pricing-btn').forEach(button => {
+      button.addEventListener('click', function() {
+        const packageName = this.dataset.package;
+        const whatsappUrl = `https://wa.me/6281220019871?text=Halo, saya tertarik dengan paket ${packageName} untuk jasa desain presentasi SlideIn`;
+        window.open(whatsappUrl, '_blank');
+      });
+    });
+
+    // Parallax effect for hero section
+    window.addEventListener('scroll', () => {
+      const scrolled = window.pageYOffset;
+      const hero = document.querySelector('.hero-section');
+      if (hero) {
+        hero.style.transform = `translateY(${scrolled * 0.5}px)`;
+      }
+    });
+  </script>
+</body>
+</html>
